@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>权力的游戏 — 人情世故闯关 v4</title>
+<link rel="stylesheet" href="M1-CSS.css">
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+<div id="cursorGlow"></div>
+<div class="transition-overlay" id="transitionOverlay"></div>
+<div class="vignette" id="vignette"></div>
+<div class="scanline-effect" id="scanline"></div>
+<div class="result-flash" id="resultFlash"></div>
+
+<div class="memorial-overlay" id="memorialOverlay">
+  <div>
+    <div class="memorial-scroll" id="memorialScroll">
+      <div class="ms-seal">印</div>
+      <div class="ms-text" id="memorialText"></div>
+      <div class="ms-signature" id="memorialSign"></div>
+      <div class="ms-date" id="memorialDate"></div>
+    </div>
+    <div class="memorial-btns">
+      <button class="memorial-btn" onclick="closeMemorial()">重新来过</button>
+      <button class="memorial-btn" onclick="saveMemorialAsImage()">保存为图片</button>
+    </div>
+  </div>
+</div>
+
+<div class="screen active" id="landing">
+  <h1>权 力 的 游 戏</h1>
+  <p class="subtitle">每一个选择都在书写你的政治墓志铭</p>
+  <div class="divider-line"></div>
+  <div class="choice-cards">
+    <div class="choice-card" onclick="showIntro('whitehouse')">
+      <span class="card-icon">🏛️</span>
+      <div class="card-era">Chapter I — 当代</div>
+      <h2>白宫的一天</h2>
+      <p>从晨间简报到深夜交易，八个场景，每一次表态都是债务，每一次沉默也是。<br><br>你不是在闯关——你是在写自己的政治墓志铭。</p>
+    </div>
+    <div class="choice-card" onclick="showIntro('ming')">
+      <span class="card-icon">🏯</span>
+      <div class="card-era">Chapter II — 穿越</div>
+      <h2>大明官场</h2>
+      <p>穿越到万历年间，从七品知县做起。两本账、人情债、派系站队——<br><br>你能在这张网里活几集？</p>
+    </div>
+  </div>
+  <div class="landing-footer">
+    <button onclick="showGallery()">结局图鉴</button>
+  </div>
+</div>
+
+<div class="screen" id="intro-screen"></div>
+
+<div class="screen" id="game-screen">
+  <div class="game-header">
+    <span class="scenario-label" id="scenarioLabel"></span>
+    <span class="level-indicator" id="levelIndicator"></span>
+    <button class="audio-btn" id="audioBtn" onclick="toggleAudio()">♪</button>
+    <button class="back-btn" onclick="confirmExit()">返回首页</button>
+  </div>
+  <div class="channels-bar" id="channelsBar">
+    <span class="ch-label">消息渠道</span>
+    <div class="ch-dots" id="channelDots"></div>
+    <span class="ch-status" id="channelStatus"></span>
+  </div>
+  <div class="game-layout">
+    <div class="game-main">
+      <div class="scene-container" id="sceneContainer"></div>
+      <div class="game-mobile-debt" id="mobileDebt">
+        <div class="debt-panel-title">人情债记录本</div>
+        <div class="debt-scroll-mobile" id="mobileDebtScroll"></div>
+      </div>
+    </div>
+  </div>
+  <div class="debt-panel" id="debtPanel">
+    <div class="debt-panel-title">人情债记录本</div>
+    <div class="debt-scroll" id="debtScroll"></div>
+    <div class="debt-count" id="debtCount"></div>
+  </div>
+  <div class="debt-panel-toggle" id="debtToggle" onclick="toggleDebtPanel()">卷 轴</div>
+</div>
+
+<div class="screen" id="ending-screen"></div>
+<div class="screen" id="gallery-screen"></div>
+
+<script src="analysis-engine.js"></script>
+<script src="analysis-renderer.js"></script>
+<script src="M4-Data-WhiteHouse.js"></script>
+<script src="M5-Data-Ming.js"></script>
+<script src="M3-Engine.js"></script>
+<script src="M6-Mechanics.js"></script>
+</body>
+</html>
